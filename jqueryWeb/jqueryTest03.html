@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bootstrap-select 多选下拉框实现</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://cdn.bootcss.com/bootstrap-select/1.12.1/css/bootstrap-select.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+</head>
+
+<body>
+    <div class="layui-form-item">
+        <label class="layui-form-label">印花税税种认定:</label>
+        <div class="layui-input-block">
+            <select id="yhsszrd" name='yhsszrd' class="selectpicker show-menu-arrow form-control" multiple>
+                <option selected value="101110101">购销合同</option>
+                <option value="101110102">加工承揽合同</option>
+                <option value="101110103">建设工程勘察设计合同</option>
+                <option value="101110104">建筑安装工程承包合同</option>
+                <option value="101110105">财产租赁合同</option>
+                <option value="101110106">货物运输合同</option>
+                <option value="101110107">仓储保管合同</option>
+                <option value="101110108">借款合同</option>
+                <option value="101110109">财产保险合同</option>
+                <option value="101110110">技术合同</option>
+                <option value="101110200">产权转移书据</option>
+                <option value="101110300">其他</option>
+            </select>
+        </div>
+    </div>
+    <script>
+    // 获取值
+    function getVal() {
+        console.log($('#fruits').val());
+    }
+    
+    // 回显操作
+    // var str = '3,4,5,6';
+    // var arr = str.split(',');
+    // $('#fruits').selectpicker('val', arr);
+    </script>
+</body>
+
+</html>

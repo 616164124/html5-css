@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>web10-1-jquery</title>
+    <script type="text/javascript" src="../jquery-3.5.1.min.js"></script>
+  </head>
+  <style>
+    .split {
+      width: 100%;
+      height: 5px;
+      background-color: rgb(160, 26, 44);
+      margin-bottom: 5px;
+    }
+  </style>
+  <body>
+    <div class="j01">
+      <p>hello</p>
+    </div>
+    <div class="split"></div>
+    <div class="j02">
+      <p>双击之后隐藏</p>
+    </div>
+    <div class="split"></div>
+    <div id="j03">
+      <p>鼠标移动到该区域</p>
+    </div>
+    <div class="split"></div>
+    <div id="j04">
+      <p>鼠标移出到该区域</p>
+    </div>
+    <div class="split"></div>
+    <div id="j05">
+      <p>慢慢的隐藏</p>
+    </div>
+    <div class="split"></div>
+    <div id="j06">
+      <p>toggle的形式实现显示与隐藏</p>
+    </div>
+    <div class="split"></div>
+    <div id="j07">
+      <p>Hello</p>
+    </div>
+
+    <div class="split"></div>
+    <div id="j08">
+      <p id="j08-1">Hello</p>
+      <p id="j08-2-1">hello-1</p>
+    </div>
+    <div class="split"></div>
+    <div id="j09">
+    </div>
+  </body>
+  <script>
+    $("div.j01").click(function () {
+      $(this).hide();
+    });
+    $("div.j02").dblclick(function () {
+      $(this).hide();
+    });
+    //#为选择的是id
+    // $("#j03").mouseenter(function () {
+    //   alert("移动到了该区域");
+    // });
+    // $("#j04").mouseleave(function () {
+    //   alert("鼠标移出该区域");
+    // });
+     $("#j05").click(function () {
+      //回调函数执行alert
+      $(this).hide(1000, function () {
+        alert("隐藏结束");
+      });
+    });
+    $("#j06").click(function () {
+      $(this).toggle();
+    });
+    $("#j07").click(function () {
+      $(this).fadeIn(1000,function () {
+        alert("结束fadeOut");
+      })
+    });
+//如果元素向下滑动，则 slideToggle() 可向上滑动它们。
+//如果元素向上滑动，则 slideToggle() 可向下滑动它们。
+$("#j08-1").click(function(){
+  $("#j08-2-1").slideToggle(1000)
+})
+  </script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../jquery-3.5.1.min.js"></script>
+    <title>jquery-3</title>
+</head>
+
+<body>
+    <div class="one">
+        <p>hello</p>
+    </div>
+    <div class="two">10.09</div>
+    <div class="three">0.01</div>
+    <div class="four"></div>
+
+    <input type="text" name="txt" value="Hello" onchange="checkField()">
+</body>
+<script>
+    $("div.one").dblclick(function (){
+        $(this).hide();
+        var a = 0.1;
+        var b = 0.004;
+        console.log(a - b);
+    })
+  
+$(function(){
+    // $(".three").text(1.09+2.22);
+    console.log($('.three').html());
+    $(".four").html("1221")
+    var a=  $(".three").val()
+    console.log(a);
+    $(".four").text(a) //将three 的值给four
+
+    console.log("=====>"+ $(".three").html());
+    console.log("h"+ new Number('000019'));
+})
+
+function checkField(){
+    console.log("checkField");
+}
+</script>
+
+</html>

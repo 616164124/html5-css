@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div id="one">hf</div>
+
+</body>
+<script>
+var src= "101110104,101110107----101110109101110110101110300101110189999988shkfhkhiuewhf101110102101110103jfwhihfksjhfkw10111010410111010510111010610111010511111,";
+var srclist=['101110104','101110107','101110111111108','101110189999988']
+var s = "101110103jfwhihfksjhfkw,"+
+"101110104,"+
+"101110105,"+
+"101110106,"+
+"101110107,"+
+"101110108,"+
+"101110109,"+
+"101110110,"+
+"101110200,"+
+"101110300,"
+var src2 = "10111010511111";
+console.log(src.indexOf("101110189999988"));
+console.log("=========");
+for(var key in srclist){
+    console.log(srclist[key]+"==================");
+    if(src.search(srclist[key]) != -1){
+        console.log(srclist[key]+'++++');
+    }
+
+}
+
+
+  $("#one").val()
+//   console.log(  $("#one").html());
+//   console.log($("#one").text().indexOf(src));
+// console.log(src.search($("#one").text()));
+</script>
+</html>

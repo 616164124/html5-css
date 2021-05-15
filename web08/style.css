@@ -1,0 +1,40 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background: white;
+}
+.middle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.sm-container{
+    text-align: center;
+}
+.sm-container i{
+    color: #878787;
+    padding:20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.sm-container i:hover{
+transform:scale(1.2);
+}
+.sm-menu{
+    background:red;
+    position: absolute;
+    border-radius: 8px;
+    display: none;
+}
+.sm-menu::before{
+    content:'';
+    width:10px;
+    height:10px;
+    background:yellow;
+    position: absolute;
+    top:-5px;
+    left:50%;
+    transform:translate(-50%) rotate(45deg);
+
+}
