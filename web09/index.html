@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>index</title>
-    <link rel="stylesheet" href="./style.css"/>
-    <link rel="stylesheet" href="../fontawesome-free-5.15.2-web/css/all.css"/>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
-		<div class="hello"><p>hello</p></div>
+    <div class="hello">
+        <p>1hello</p>
+    </div>
+    <div class="hello">
+        <p>2hello</p>
+    </div>
 </body>
 <script>
-	
-$("div.hello").click(function(event) {
-	/* Act on the event */
-	$(this).hide();
-});
-	
+
+    // $("div.hello").click(function () {
+    //     /* Act on the event */
+    //     $(this).hide();
+    // });
+
+    $("div.hello").dblclick(function(){
+            $(this).hide();
+    })
+
+    $(function(){
+        console.log("1234444");
+    });
+    
+
 
 </script>
-</html>
 
+</html>
