@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "../layui/css/layui.css" media="all"/>
+    <script type="text/javascript" src="../jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css"  media="all">
+    <script src="../layui/layui.js" charset="utf-8"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">单行选择框</label>
+        <div class="layui-input-block">
+          <select name="interest" lay-filter="aihao">
+            <option value=""></option>
+            <option value="0">写作</option>
+            <option value="1" selected="">阅读</option>
+            <option value="2">游戏</option>、】
+            <option value="3">音乐</option>
+            <option value="4">旅行</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="layui-inline">
+        <label class="layui-form-label">搜索选择框</label>
+        <div class="layui-input-inline">
+          <select name="modules" lay-verify="required" lay-search="">
+            <option value="">直接选择或搜索选择</option>
+            <option value="1">layer</option>
+            <option value="2">form</option>
+            <option value="3">layim</option>
+            <option value="4">element</option>
+            <option value="5">laytpl</option>
+            <option value="6">upload</option>
+            <option value="7">laydate</option>
+            <option value="8">laypage</option>
+            <option value="9">flow</option>
+            <option value="10">util</option>
+            <option value="11">code</option>
+            <option value="12">tree</option>
+            <option value="13">layedit</option>
+            <option value="14">nav</option>
+            <option value="15">tab</option>
+            <option value="16">table</option>
+            <option value="17">select</option>
+            <option value="18">checkbox</option>
+            <option value="19">switch</option>
+            <option value="20">radio</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="xx_1">
+        <form>
+            用户名
+            <input id="yhm" />
+            密码
+            <input id="mm" />
+            <button onclick="denglu()">按钮</button>
+        </form>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+    function denglu() {
+        
+        console.log("===========");
+        $.ajax({
+            url: "http://localhost:7000/admin/get?id=1",
+            dataType: 'json',
+            type: 'get',
+            success: function (data) {
+                console.log(data);
+
+            },
+            error: function () {
+            }
+        });
+
+    }
+
+
+
+</script>
+</html>

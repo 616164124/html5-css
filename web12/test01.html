@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../../public/zkui/pubinclude.js"></script>
+    <script src="../../public/js/jquery.form2json.js"></script>
+    <link type="text/css" rel="stylesheet" href="../public/css/mui.min.css">
+    <script src="../public/js/mui.js"></script>
+    <script src="../../public/dist/js/jquery.min.js"></script>
+    <script src="../../pages/zzdj/mathcommon.js"></script>
+    <link rel="stylesheet" href="../../public/zkui/csht_h5.css">
+    <script type="text/javascript" src="index.js"></script>
+
+    <style>
+        .layui-input-block {
+            margin-left: 110px;
+            margin-left: margin-left: 140px;
+            width: 70%;
+        }
+
+        .layui-input-block i {
+            margin-right: 10px;
+
+        }
+
+        .input-hwmc .layui-form-select input {
+            border-top-right-radius: 10px;
+        }
+
+        .layui-form-item {
+            border: 0;
+        }
+
+        .layui-form-select dl {
+            top: 54px;
+            left: inherit;
+            right: 0;
+            min-width: 100%;
+            max-height: 300px;
+            min-height: 200px;
+        }
+
+        .layui-form-label {
+            /* width: 20%;*/
+            background-color: #fff;
+            text-align: left;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<form class="layui-form" action="" id="form_jcxx" style="">
+    <div class="tit-t">
+        <div onclick="refh(4);" class="layui-col-xs4" style="width: 25%;color: #0C57A2;border-top: none;">
+			<span class="image-group" style="float: inherit!important;margin-right: inherit!important;">
+				<img style="margin: 2px 10px 0px 10px;width: 15px !important;" src="../../public/zkui/imgs/back.png"
+                     alt="返回">
+			</span>
+            <span style="float: left;line-height: 45px;font-size: 16px;">返回</span>
+        </div>
+        <div class="layui-col-xs4 text-center" style="width: 50%;padding-top: 4px;">
+            <span style="font-size: 18px;">基础信息</span>
+        </div>
+    </div>
+
+
+    <div id="jcxxcontent">
+        <div class="layui-form-item">
+            <!--            <span style="color: #E60012;font-size: 17px;">*</span>-->
+            <label class="layui-form-label" style="border-top-left-radius: 10px;">经办人:</label>
+            <div class="layui-input-block">
+                <input type="text" id="jbr" class="layui-input right-i" placeholder="经办人"/>
+            </div>
+        </div>
+        <div style="background-color: #fff;">
+            <hr style="margin: 0 20px;">
+        </div>
+        <div class="layui-form-item">
+
+            <label class="layui-form-label">电话:</label>
+            <div class="layui-input-block">
+                <input type="text" id="jcxx_dh" class="layui-input right-i" placeholder="电话"/></div>
+        </div>
+        <div style="background-color: #fff;">
+            <hr style="margin: 0 20px;">
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">开户行:</label>
+            <div class="layui-input-block">
+                <input type="text" id="khh" class="layui-input right-i" placeholder="开户行"/></div>
+        </div>
+        <div style="background-color: #fff;">
+            <hr style="margin: 0 20px;">
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">银行账号:</label>
+            <div class="layui-input-block">
+                <input type="text" id="yhzh" class="layui-input right-i" placeholder="银行账号"/></div>
+        </div>
+        <div style="background-color: #fff;">
+            <hr style="margin: 0 20px;">
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单位名称:</label>
+            <div class="layui-input-block">
+                <input type="text" id="nsrmc" class="layui-input right-i" placeholder="单位名称"/></div>
+        </div>
+        <div style="background-color: #fff;">
+            <hr style="margin: 0 20px;">
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">社会代码:</label>
+            <div class="layui-input-block">
+                <input type="text" id="nsrsbh" class="layui-input right-i" placeholder="社会代码"/></div>
+        </div>
+        <div style="background-color: #fff;">
+            <hr style="margin: 0 20px;">
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">经营地址:</label>
+            <div class="layui-input-block">
+                <input type="text" id="jcxx_jydz" class="layui-input right-i" placeholder="经营地址"/></div>
+        </div>
+        <div style="background-color: #fff;">
+            <hr style="margin: 0 20px;">
+        </div>
+        <div class="layui-form-item" style="border-bottom: 0;">
+            <label class="layui-form-label" style="border-bottom-left-radius: 10px;">公司电话:</label>
+            <div class="layui-input-block">
+                <input style="border-bottom-right-radius: 10px;" type="text" id="jcxx_gsdh" class="layui-input right-i"
+                       placeholder="公司电话">
+            </div>
+        </div>
+        <div style="background-color: #fff;">
+            <hr style="margin: 0 20px;">
+        </div>
+    </div>
+    <div class="text-center center-btn " style="margin-top: 40px;">
+        <!--        <button type="button" style="width: 200px;margin-top: 20px;" class="layui-btn" onclick="refh(4);">返回</button>-->
+                <button type="button" style="width: 200px;margin-top: 20px;" class="layui-btn" onclick="save_bc();">保存</button>
+    </div>
+</form>
+
+</body>
+</html>

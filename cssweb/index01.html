@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cssweb01</title>
+</head>
+
+<body>
+    <h1>文章段落的排版</h1>
+    <p>
+        <span>随着</span>移动互联网和通信技术的高速发展，线上交流已成为人们工作、生活的最重要方式。没带手机出门就像失去了全世界，电量低于 50%
+        就开始焦虑，因为好友列表里保存着我们跟这个世界的联结。而通过会话列表打开一个会话，是我们每天最频繁的动作之一。
+        IM 会话列表里会话的准确性、实时性会直接影响用户的使用体验与感受。本文分享融云 IM 即时通讯的会话服务数据读写设计思路。 (关注 融云全球互联网通信云， 了解更多IM & RTC技术、场景话题 )
+    </p>
+    <!-- p 跟span中有一个div就不生效了 -->
+    <p>
+    <div><span>ssf</span></div>
+    </p>
+
+    <style>
+        /* 严格按顺序的标签来 */
+        p span {
+            background-color: aqua;
+            font-size: 20px;
+        }
+        p{
+            margin: 5px;
+        }
+    </style>
+
+</body>
+
+</html>

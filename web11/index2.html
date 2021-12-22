@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    
+$.ajax({
+		url : "http://192.100.140.6:9011/hscweb/app/sbb/lrqr.do",
+		dataType : 'json',
+		type : 'post',
+		success : function(data) {
+            console.log(data);
+			if (data.data.ret == '1'){
+				layer.alert(data.data.msg);
+			}else{
+				layer.msg('登陆成功');
+				yhxx(); 
+			}
+		},
+		error : function() {
+			layer.alert('加载失败!');
+		}
+	});
+</script>
+
+</html>

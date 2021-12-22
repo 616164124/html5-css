@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="zxbl" style="float: right; font-size: 20px; font-style: oblique;"></div>
+    <br />
+    <div>
+        <p id="sx"><b>【事务名称】</b></p>
+        <p id="sxmc"></p>
+    </div>
+    <div>
+        <p id="sx"><b>【服务对象】</b></p>
+        <p id="fwdx"></p>
+
+    </div>
+    <div>
+        <p id="sx"><b>【受理条件】</b></p>
+        <p id="sltj"></p>
+
+    </div>
+    <div>
+        <p id="sx"><b>【法定办结时限】</b></p>
+        <p id="fdbjsx"></p>
+
+    </div>
+    <div>
+        <p id="sx"><b>【申报材料】</b></p>
+        <div id="clmcs">
+        </div>
+    </div>
+    <div>
+        <p id="sx"><b>【是否收费】</b></p>
+        <p id="sfsf"></p>
+    </div>
+    <div>
+        <p id="sx"><b>【是否网办】</b></p>
+        <p id="sfwb"></p>
+    </div>
+    <div>
+        <p id="sx"><b>【设定依据】</b></p>
+        <div id="sdyjs">
+        </div>
+    </div>
+
+</body>
+<script>
+
+    window.onload = function () {
+        var UUID = getParams("uuid")
+        var ticket = getParams("ticket1")
+        var url
+        var headurl = "https://etax.zhejiang.chinatax.gov.cn"
+        var text3=""
+
+        url = "/zjgfdzswjdjrd/app/dj/dzhydj/app_dzhydj.html"
+        //0ae6862c-fb84-4dbc-a1f7-5d8795e65fc4   d31c47f7-ce8c-4f7b-bc11-52c2dce4eb10
+        UUID = "0ae6862c-fb84-4dbc-a1f7-5d8795e65fc4"
+        url = headurl + url + "?ticket=" + ticket;
+        console.log(url);
+        text3 = "<a href='" + url + "'>在线办理</a>"
+        $("#zxbl").append(text3);
+
+        // blink: "https://www.zjzwfw.gov.cn/zjservice/item/detail/index.do?localInnerCode=0ae6862c-fb84-4dbc-a1f7-5d8795e65fc4"
+        $.ajax({
+            url: 'https://etax.zhejiang.chinatax.gov.cn/BigScreen/bszn/getBszn.do',
+            data: JSON.stringify({
+                blink: "https://www.zjzwfw.gov.cn/zjservice/item/detail/index.do?localInnerCode=" + UUID
+            }),
+            async: false,
+            method: 'POST',
+            contentType: "application/json",
+            success: function (data) {
+                if (data.resultCode == '000000') {
+                    $("#sfsf").html(data.resultObj.sfsf)
+                    $("#sxmc").html(data.resultObj.sxmc)
+                    $("#fwdx").html(data.resultObj.fwdx)
+                    $("#sltj").html(data.resultObj.sltj)
+                    $("#fdbjsx").html(data.resultObj.fdbjsx)
+                    $("#sfwb").html(data.resultObj.sfwb)
+                    //sbcl 申报材料
+                    if (data.resultObj.sbcl.length !== 0) {
+                        for (i in data.resultObj.sbcl) {
+                            var text1 = "<p class='clmc'>" + data.resultObj.sbcl[i].clmc + "</p>"
+                            var text2 = "<p class='clxs'>" + data.resultObj.sbcl[i].clxs + "&emsp;|&emsp;" + data.resultObj.sbcl[i].cllx + "&emsp;  |&emsp;" + data.resultObj.sbcl[i].clbyx + "  &emsp;| &emsp; " + data.resultObj.sbcl[i].zzclfs + "</p>"
+                            $("#clmcs").append(text1, text2);
+                        }
+                    }else{
+                        $("#clmcs").append("<p>无</p>");
+                    }
+                    //sdyj 设定依据
+                    // $("#sfwb").html(data.resultObj.sfwb)
+                    for (i in data.resultObj.sdyj) {
+                        var text1 = "<p class='flfgmc'>" + data.resultObj.sdyj[i].flfgmc + "</p>"
+                        var text2 = "<p class='yjwh'>" + data.resultObj.sdyj[i].yjwh + "</p>"
+                        var text3 = "<p class='tknr' id = 'tknr" + i + "'  style=' white-space: nowrap; overflow: hidden; text-overflow: ellipsis'>" + data.resultObj.sdyj[i].tknr + "</p></span>"
+                        $("#sdyjs").append(text1, text2, text3, "<p id='openBtn" + i + "' onclick='more(" + i + ")' style='color: blue'>展开</p>", "<p/>");
+
+                    }
+
+                } else {
+                    console.log(data);
+                }
+            },
+
+        });
+        
+        $.ajax({
+            url: "https://etax.zhejiang.chinatax.gov.cn/zjgfcssdzswjfpyh-tt/swsx/querySwsxBszn.do?uuid="+UUID,
+            async:false,
+            method: 'GET',
+            contentType: "application/json",
+            success: function (res) {
+                url=headurl+res.resultObj.SJ_DZ+"?ticket="+ticket
+                 text3 = "<a href='" + url + "'>在线办理</a>"
+              $("#zxbl").append(text1);
+            },
+        });
+
+    }
+    //获取传过来的值
+    function getParams(key) {
+        var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    };
+
+    //展开
+    function more(e) {
+        console.log("more----" + e);
+        $("#tknr" + e).removeAttr("style");
+        $("#openBtn" + e).remove();
+        $("#tknr" + e).append("<p id='sq" + e + "' onclick='sq(" + e + ")' style='color: rgb(7, 7, 247)'>收起</p>")
+
+    }
+    //收起
+    function sq(e) {
+        console.log("sq----" + e);
+        $("#tknr" + e).css({ "white-space": "nowrap", "overflow": "hidden", "text-overflow": "ellipsis" })
+        $("#tknr" + e).append("<p id='openBtn" + e + "' onclick='more(" + e + ")' style='color: rgb(7, 7, 247)'>展开</p>")
+        $("#sq" + e).remove();
+
+    }
+
+
+
+</script>
+<style>
+    body {
+        margin: 10px;
+    }
+
+    .openBtn {
+        color: rgb(7, 7, 247);
+    }
+
+    .flfgmc {
+        font-size: 20px;
+        color: #1677FF;
+    }
+
+    .clxs {
+        font: menu;
+    }
+
+    .yjwh {
+        font: menu;
+    }
+</style>
+
+</html>

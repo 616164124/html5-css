@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下拉框（相似的具有搜索功能）</title>
+    <script type="text/javascript" src="../jquery-3.5.1.min.js"></script>
+
+</head>
+
+<body>
+    <form action="" method="get">
+        <input list="browsers" oninput="search()" name="browser">
+        <datalist id="browsers">
+            <option value="临安好仁核桃食品">
+            <option value="杭州淼然医疗器材有限公司">
+            <option value="杭州创鸿电气有限公司">
+            <option value="杭州新燃广告策划有限公司">
+            <option value="杭州铭联数码科技有限公司1">
+            <option value="杭州森亿医疗器械有限公司">
+            <option value="杭州宝岛艮山西路眼镜加盟店">
+        </datalist>
+        <input type="submit">
+    </form>
+    <br/><br/>
+    <div>
+        <input list="browsers"  name="browser">
+        <select id="browsers" onchange="search()">
+            <option value="临安好仁核桃食品">
+            <option value="杭州淼然医疗器材有限公司">
+            <option value="杭州创鸿电气有限公司">
+            <option value="杭州新燃广告策划有限公司">
+            <option value="杭州铭联数码科技有限公司1">
+            <option value="杭州森亿医疗器械有限公司">
+            <option value="杭州宝岛艮山西路眼镜加盟店">
+        </select>
+    </div>
+</body>
+<script>
+    // $('#browsers').append('<option value="hello">')
+
+        function search(){
+            console.log(13);
+        }
+        function sys(){
+            console.log("sys()")
+
+        }
+
+</script>
+
+</html>
