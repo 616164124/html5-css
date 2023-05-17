@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>五子棋</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+	<style>
+        /* 开始页面中的 开始对局 的字的属性  */
+		html,body,section,div,p{
+			padding: 0;
+			margin: 0;
+            /* 字体大小 */
+			font-size: 12px;
+		}
+		body{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+		}
+        /* 设置棋盘 */
+		#chessboard{
+            /* 棋盘宽度 */
+			width: 90vmin;
+            /* 棋盘高度 */
+			min-height: 90vmin;
+            /* 棋盘位于页面的位置 */
+			margin: calc(50vh - 46vmin + 2px) auto;
+            /* 棋盘底色 */
+			background: #f5ca69;
+            /* 棋盘边界 */
+			border: 2px solid #000;
+            /* 棋盘外围圆角 */
+			border-radius: 7px; 
+		}
+        /* 棋盘下边界 */
+		#chessboard::after {
+		    content: "";
+		    display: block;
+		    height: 0;
+		    clear: both;
+		    visibility: hidden;
+		}
+        /* 棋盘上面的线 */
+		#chessboard div{
+			width: calc(9vmin - 2px);
+			height: calc(9vmin - 2px);
+			float: left;
+			border: 1px solid #000;
+			border-radius: 5px;
+		}
+        /* 棋子的共同属性 */
+		#chessboard div p{
+		    width: 97%;
+		    height: 97%;
+		    margin: 1.5% auto;
+			border-radius: 100% ;
+		}
+        /* 白棋属性 */
+		.white{
+			background: -webkit-radial-gradient(at 35% 35%,#FFF,#CCC,#FFF);
+		    background: -o-radial-gradient(at 35% 35%,#FFF,#CCC,#FFF); 
+		    background: -moz-radial-gradient(at 35% 35%,#FFF,#CCC,#FFF); 
+		    background: radial-gradient(at 35% 35%,#FFF,#CCC,#FFF); 
+			box-shadow: .1rem .1rem .05rem rgba(0,0,0,.5);
+		}
+        /* 黑棋属性 */
+		.black{
+			background: -webkit-radial-gradient(at 30% 30%,#999 -13%,#000 35%,#999 200%);
+		    background: -o-radial-gradient(at 30% 30%,#999 -13%,#000 35%,#999 200%); 
+		    background: -moz-radial-gradient(at 30% 30%,#999 -13%,#000 35%,#999 200%); 
+		    background: radial-gradient(at 30% 30%,#999 -13%,#000 35%,#999 200%); 
+			box-shadow: .1rem .1rem .05rem rgba(0,0,0,.5);
+		}
+        /* 最开始的提示框的属性 */
+		#mask{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 250px;
+			left: 500px;
+			background-color: rgba(0,0,0,.7);
+		}
+        /* 最开始的提示框里面填充物的属性 */
+		.conBox{
+			display: block;
+			width: 300px;
+			height: 180px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			background-color: #fff;
+			border-radius: 3px;
+			box-shadow: .1rem .1rem .05rem rgba(0,0,0,.5);
+		}
+        /* 提示页面 开始对局 的字的位置属性 */
+		.conBox h1{
+			width: 95%;
+			float: left;
+			margin: 0;
+			line-height: 45px;
+			text-align: center;
+		}
+		.conBox p{
+			display: block;
+			width: 40px;
+			height: 40px;
+			float: left;
+			margin-top: 40px;
+			font-size: 32px;
+			text-align: center;
+			line-height: 40px;
+			cursor: pointer;
+		}
+		.conBox p:nth-child(2){
+			margin-left: 60px;
+		}
+		.conBox p:nth-child(3){
+			width: 100px;
+			font-size: 20px;
+			cursor: initial;
+		}
+        /* 最开始提示框的属性 */
+		.conBox button{
+			width: 80px;
+			float: left;
+			margin-top: 30px;
+			margin-left: 110px;
+             /* 确认 字的颜色 */
+			color: #fff;
+			font-size: 14px;
+			text-align: center;
+			line-height: 28px;
+            /* 确认 按钮的背景颜色 */
+			background-color: #f60;
+			border: none;
+			outline: none;
+		}
+		.clear::after{
+			content: "";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+        /* 位置属性 */
+		.border,.borderTop,.borderBot
+		{
+			position: relative;
+		}
+		.border:after{
+			content: " ";
+		    width: 200%;
+		    height: 200%;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    border: 1px solid rgba(0, 0, 0, 0.2);
+		    -webkit-transform: scale(0.5);
+		    transform: scale(0.5);
+		    -webkit-transform-origin: 0 0;
+		    transform-origin: 0 0;
+		    box-sizing: border-box;
+		}
+        /* 最开始页面提示框中的那条横线 */
+		.borderBot:after{
+		    content: " ";
+		    position: absolute;
+		    left: 0;
+		    bottom: 0;
+		    right: 0;
+		    height: 1px;
+		    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		    -webkit-transform-origin: 0 100%;
+		    transform-origin: 0 100%;
+		    -webkit-transform: scaleY(0.5);
+		    transform: scaleY(0.5);
+		}
+		.borderTop:before{
+			content: " ";
+		    position: absolute;
+		    left: 0; 
+		    top: 0;
+		    right: 0; 
+		    height: 1px;
+		    border-top: 1px solid rgba(0, 0, 0, 0.2);
+		    -webkit-transform-origin: 0 0;
+		    transform-origin: 0 0;
+		    -webkit-transform: scaleY(0.5);
+		    transform: scaleY(0.5);
+		}
+	</style>
+	
+</head>
+<body>
+    <!-- 创建棋盘 -->
+	<section id="chessboard" class="clear">
+	</section>
+    <!-- 创建页面初始提示框 -->
+	<section id="mask">
+		<aside class="conBox">
+			<h1 class="borderBot">开始对局</h1>
+			<button id="submitBtn">确认</button>
+		</aside>
+	</section>
+	<div style="text-align:center;">
+        <script>
+			
+            window.onload=function(){
+                var grid;
+                var chessArr = [];
+				// 记录有效棋子个数
+                var timer = -1;
+				var free  = 0;
+                // 棋盘大小
+                var lineNum = 15;
+                var box = document.getElementById('chessboard');
+                var chessBox = box.getElementsByTagName('div');
+                var submitBtn = document.getElementById('submitBtn');
+    
+                //棋盘初始化
+                submitBtn.onclick = function(){
+                    var chessMaxNum = lineNum * lineNum;
+                    var chessWH = 90/lineNum;
+                    for (var i = 0; i < chessMaxNum; i++) {
+                        // 创造棋盘的线
+                        grid = document.createElement('div');
+                        grid.style.width = 'calc(' + chessWH + 'vmin - 2px)';
+                        grid.style.height = 'calc(' + chessWH + 'vmin - 2px)';
+                        grid.id=i;
+                        box.appendChild(grid);
+                        chessArr[i] = 0;
+    
+						// 点击反应函数
+                        grid.onclick = function(x){
+							// index代表棋子位置编号，从0开始，行优先
+                            var index = x.target.id||x.target.parentNode.id;
+                            playChess(index);
+                        };
+                        
+                    };
+                    // 提示框不显示
+                    mask.style.display = 'none';
+                }
+    
+                //棋子对象
+                function Chess(){
+                    // 黑色先手
+                    this.color = 'black';
+                    this.site = 0;
+                    //将棋子放入页面
+                    this.chessDom = function(){
+                        var dom = document.createElement('p');
+                        dom.setAttribute('class',this.color);
+                        return dom;
+                    }
+                    this.ligature = function(arr){
+                        var whiteChess = arr.map(function(s){
+                            return (s.color == 'white')?parseInt(s.site):0;
+                        });
+                        var blackChess = arr.map(function(s){
+                            return (s.color == 'black')?parseInt(s.site):0;
+                        });
+    
+                        judge(whiteChess,'白子');
+                        judge(blackChess,'黑子');
+						
+                        // 判断是否获胜的函数
+                        function judge(che,color){
+                            for (var i = 0;i < che.length;i++) {
+								// 棋子列坐标
+                                var x = che[i]%lineNum;
+								// 棋子行坐标
+                                var y = parseInt(che[i]/lineNum);
+                                // 右下
+                                if ( x <= lineNum - 5 && y <= lineNum - 5 && che[i] != 0 ) {
+                                    if( che[i+1*lineNum+1] != 0 && che[i+2*lineNum+2] != 0 && che[i+3*lineNum+3] != 0 && che[i+4*lineNum+4] != 0 ){
+                                        console.log("1");
+                                        alert(color+'获胜!');
+                                        location.replace(location);
+                                        return true;
+                                    }
+                                };
+                                // 竖下
+                                if ( y <= lineNum - 5 && che[i] != 0 ) {
+                                    if( che[i+1*lineNum] != 0 && che[i+2*lineNum] != 0 && che[i+3*lineNum] != 0 && che[i+4*lineNum] != 0 ){
+                                        console.log("2");
+                                        alert(color+'获胜!');
+                                        location.replace(location);
+                                        return true;
+                                    }
+                                };
+                                // 右上
+                                if ( x >= 4 && y <= lineNum - 5 && che[i] != 0 ) {
+                                    if( che[i+1*lineNum-1] != 0 && che[i+2*lineNum-2] != 0 && che[i+3*lineNum-3] != 0 && che[i+4*lineNum-4] != 0 ){
+                                        console.log("3");
+                                        alert(color+'获胜!');
+                                        location.replace(location);
+                                        return true;
+                                    }
+                                };
+                                // 横着
+                                if ( x <= lineNum - 5 && che[i] != 0 ) {
+                                    if( che[i+1] != 0 && che[i+2] != 0 && che[i+3] != 0 && che[i+4] != 0 ){
+                                        console.log("4");
+                                        alert(color+'获胜!');
+                                        location.replace(location);
+                                        return true;
+                                    }
+                                };
+                            };
+							
+                        }
+
+                    }
+                } 
+                // 落子
+                function playChess(i){
+					// 第一次落子前的提示
+					if(timer==-1)
+					{
+						var r=confirm("是否是自由开局？");
+						if(r==true)free=1;
+						else alert('由于是指定开局，开局的前三着棋均有黑方完成');
+						timer++;
+					}
+					else if(timer==0&&free==0)
+					{
+						// 提示：第一个棋子只能落在天元
+						if(i!=112)alert('第一手黑子必须落于天元(正中央)');
+						else normalplayChess(i);
+					}
+					else if(timer==1&&free==0)
+					{ 	
+						if(i!=96&&i!=97&&i!=98&&i!=111&&i!=113&&i!=126&&i!=127&&i!=128)alert('第二手白子必须落在与天元直接相连的周围八个点上');
+						else normalplayChess(i);
+					}
+					else if(timer==2&&free==0)
+					{
+						console.log("timer = "+timer+"  i = "+i);
+						if((i>=64&&i<=70)||(i>=79&&i<=85)||(i>=94&&i<=100)||(i>=109&&i<=115)||(i>=124&&i<=130)||(i>=139&&i<=145)||(i>=154&&i<=160)) normalplayChess(i);
+						else alert("开局三着的落子要落在以天元为中心的5横5纵线交叉而成的25个点内");
+					}
+					else if(timer==3&&free==0)
+					{
+						var r=confirm("是否需要交换三手？");
+						if(r==true)timer++;
+						else timer=timer+2;
+					}
+					else{
+						 normalplayChess(i);
+					}
+                }
+				function normalplayChess(i)
+				{
+					// 此处没有棋子
+					if(chessArr[i] == 0){
+						//该执子人落子成功
+						timer++;
+						chessArr[i] = new Chess();
+						// 通过计数目前有效点击次数判定目前棋子颜色
+						timer%2==1?chessArr[i].color = 'black':chessArr[i].color = 'white';
+						chessArr[i].site = i;
+						// 将新棋子放入界面
+						chessBox[i].appendChild(chessArr[i].chessDom());
+						chessArr[i].ligature(chessArr);
+					}	
+					else {
+						//页面警告
+						alert('此处有子!');
+					}
+				} 
+            };
+        </script>
+</div>
+</body>
+</html>

@@ -2,15 +2,775 @@
 <html lang="en">
 
 <head>
-    <title>Echarts</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../echarts.min.js"></script>
-    <link href="css/style.css" rel="stylesheet">
-</head>
+    <title></title>
 
-<body>
+
+    <script>
+        document.write('<script src="pubutil.js?v='+parseInt(new Date().getMinutes() / 10)+'"><\/script>');
+    </script>
+
+    <script>
+        document.write('<script src="'+zjhost+'/'+cdnname+'/public/dist/js/jquery.js"><\/script>');
+        document.write('<link rel="stylesheet" href="'+zjhost+'/'+cdnname+'/public/dist/css/bootstrap.css">');
+        document.write('<link rel="stylesheet" href="'+zjhost+'/'+cdnname+'/public/dist/css/zjgf_button.css">');
+        document.write('<script src="'+zjhost+'/'+cdnname+'/public/dist/js/jquery.dataTables.js"><\/script>');
+        document.write('<link rel="stylesheet" href="pub.css">');
+        document.write('<link rel="stylesheet" href="zjplugin.css">');
+        document.write('<script src="funcdata.js?v='+version+'"><\/script>');
+        document.write('<script src="zjplugin.js?v='+version+'"><\/script>');
+        document.write('<script src="pub.js?v='+version+'"><\/script>');
+        document.write('<script src="util/skp.js?v='+version+'"><\/script>');
+        document.write('<script src="util/jquery.qrcode.min.js?v='+version+'"><\/script>');
+        document.write('<script src="util/base64.js?v='+version+'"><\/script>');
+        document.write('<script src="util/jsencrypt.min.js?v='+version+'"><\/script>');
+        document.write('<script src="util/publicKey.js?v='+version+'"><\/script>');
+        document.write('<script src="util/md5.min.js?v='+version+'"><\/script>');
+        document.write('<script src="util/jquery.timers-1.2.js?v='+version+'"><\/script>');
+        document.write('<script src="login.js?v='+version+'"><\/script>');
+        document.write('<link rel="stylesheet" href="login.css?v='+version+'">');
+        document.write('<script src="index.js?v='+version+'"><\/script>');
+        document.write('<script src="hjjc.js?v='+version+'""><\/script>');
+        document.write('<link rel="stylesheet" href="index.css?v='+version+'">');
+    </script>
+
+</head>
+<body class="minwidth minheight">
+<OBJECT id=pkiAtvNew classid="CLSID:3C474273-7F8B-4690-8C34-855C4528658D" style="display: none;"></OBJECT>
+
+<div class="body">
+    <img class="bj" src="/zjgfcdn/zjimg/home/bj.png">
+    <div class="lefttitle">
+        <img class="logo" src="/zjgfcdn/zjimg/header/logo-zj.png">
+        <!--<label class="text">å½å®¶ç¨å¡æ»å±æµæ±ççµå­ç¨å¡å±</label>-->
+    </div>
+
+    <div class="rightmenu">
+        <a  href="other/czgc/index.html" class="right-item">
+            <img src="/zjgfcdn/zjimg/home/bz.png">
+            <span>å¸®å©</span>
+        </a>
+        <a href="xzzx/index.html" class="right-item">
+            <img src="/zjgfcdn/zjimg/home/xz.png">
+            <span>ä¸è½½</span>
+        </a>
+        <a id="hjjcbtn" class="right-item">
+            <img src="/zjgfcdn/zjimg/home/hjjc.png">
+            <span>ç¯å¢æ£æµ</span>
+        </a>
+        <a target="_blank" href="https://etax.shanghai.chinatax.gov.cn/wszx-web/bszm/apps/views/beforeLogin/csj/csj.html" class="right-item">
+            <img src="/zjgfcdn/zjimg/csjyth/csjyth.png">
+            <span>é¿ä¸è§</span>
+        </a>
+    </div>
+
+    <a id="loginopen">
+        <img src="/zjgfcdn/zjimg/home/dl.png">
+        <div>ç»å½</div>
+    </a>
+
+    <div class="top-menu">
+        <span id="wddb" class="top-menu-item">
+            <span>
+                <img src="/zjgfcdn/zjimg/home/wddb.png">
+            </span>
+            <div>
+                <img src="/zjgfcdn/zjimg/home/text/wddb.png">
+            </div>
+        </span>
+        <span id="wyyy" class="top-menu-item">
+            <span>
+                <img src="/zjgfcdn/zjimg/home/wyyy.png">
+            </span>
+            <div>
+                <img src="/zjgfcdn/zjimg/home/text/wyyy.png">
+            </div>
+        </span>
+        <span id="gxfw" class="top-menu-item">
+            <span>
+                <img src="/zjgfcdn/zjimg/home/gxfw.png">
+            </span>
+            <div>
+                <img src="/zjgfcdn/zjimg/home/text/gxfw.png">
+            </div>
+        </span>
+        <span id="tzgg" class="top-menu-item">
+            <span>
+                <img src="/zjgfcdn/zjimg/home/tzgg.png">
+            </span>
+            <div>
+                 <img src="/zjgfcdn/zjimg/home/text/tzgg.png">
+            </div>
+        </span>
+
+    </div>
+
+
+    <div class="luobobox">
+        <img src="/zjgfcdn/zjimg/plugin/tzicon.png">
+
+        <div id="homelunbo" class="lunbocontent">
+            <a style="color: red;" onclick="showCustomAlert()" class="lunbo-item">æµæ±ççµå­ç¨å¡å±ç»å½æ¨¡å¼è°æ´éç¥</a>
+            <a target="_blank" href="/zjgfcdn/static/notice.html" style="color: red;" class="lunbo-item">æ¨çéæ±æ¯æä»¬çº³ç¨æå¡çæå¤§å¨åã</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="bottom-menu">
+
+    <span id="wdxx" class="bottom-menu-item" style="background-image: url('/zjgfcdn/zjimg/home/wdxx_bg.png')">
+        <img src="/zjgfcdn/zjimg/home/wdxx.png">
+        <div>æçä¿¡æ¯</div>
+    </span>
+    <span id="wybs" class="bottom-menu-item" style="background-image: url('/zjgfcdn/zjimg/home/wybs_bg.png')">
+        <img src="/zjgfcdn/zjimg/home/wybs.png">
+        <div>æè¦åç¨</div>
+    </span>
+    <span id="wycx" class="bottom-menu-item" style="background-image: url('/zjgfcdn/zjimg/home/wycx_bg.png')">
+        <img src="/zjgfcdn/zjimg/home/wycx.png">
+        <div>æè¦æ¥è¯¢</div>
+    </span>
+    <span id="hdzx" class="bottom-menu-item" style="background-image: url('/zjgfcdn/zjimg/home/hdzx_bg.png')">
+        <img src="/zjgfcdn/zjimg/home/hdzx.png">
+        <div>äºå¨ä¸­å¿</div>
+    </span>
+    <span id="gzfw" class="bottom-menu-item" style="background-image: url('/zjgfcdn/zjimg/home/gzfw_bg.png')">
+        <img src="/zjgfcdn/zjimg/home/gzfw.png">
+        <div>å¬ä¼æå¡</div>
+    </span>
+</div>
+
+<div style="margin-top: 80px;"></div>
+<div id="footer">
+</div>
+
+
+<!--ç»å½å¼¹åºæ¡DOM-->
+<div class="loginpart hidden">
+    <div class="zj-mask">
+    </div>
+    <div class="loginbox">
+
+        <div class="login-big-nav one">
+            <a href="#qylogin" class="login-big-nav-item active" style="width: 25%;">
+                ä¼ä¸ä¸å¡
+            </a>
+            <a href="#zrrlogin" class="login-big-nav-item" style="width: 35%;">
+                èªç¶äººä¸å¡
+            </a>
+            <a href="#sszylogin" class="login-big-nav-item" style="width: 38%;">
+                ä»£çä¸å¡
+            </a>
+        </div>
+
+        <div class="login-body">
+
+            <div id="qylogin">
+                <div class="login-nav">
+                    <a id="yhmA" href="#yhm" class="active">
+                        ç¨æ·åç»å½
+                    </a>
+                    <a href="#ca">
+                        CAç»å½
+                    </a>
+                    <a href="#swsb">
+                        ç¨æ§è®¾å¤ç»å½
+                    </a>
+                    <a href="#byh">
+                        æ¥éªæ·ç»å½
+                    </a>
+                    <a href="#sbf">
+                        ç¤¾ä¿ä»£å¾æ·ç»å½
+                    </a>
+                    <span class="loginclose">
+                        X
+                    </span>
+                </div>
+                <div>
+                    <div id="yhm">
+                        <div id="yhmwrapper">
+                            <div class="zj-input-group">
+                                <div class="zj-input-item code">
+                                    <span class="imgspan">
+                                        <img src="/zjgfcdn/zjimg/home/login/username.png">
+                                    </span>
+                                    <input id="username" placeholder="ç¤¾ä¼ä¿¡ç¨ä»£ç /çº³ç¨äººè¯å«å·">
+                                </div>
+
+                                <div class="zj-input-item">
+                                <span class="imgspan">
+                                    <img src="/zjgfcdn/zjimg/home/login/password.png">
+                                </span>
+                                    <input id="password" type="password" placeholder="å¯ç ">
+                                </div>
+
+                                <div class="zj-input-item code">
+                                <span class="imgspan">
+                                    <img src="/zjgfcdn/zjimg/home/login/tpyzm.png">
+                                </span>
+                                    <input class="vcode" id="yhmcode" placeholder="éªè¯ç ">
+                                    <span class="codespan">
+                                    <img class="codeimg" id="yhmimg" src="/zjgfdzswj/kaptcha.jpg">
+                                </span>
+                                </div>
+                            </div>
+
+                            <div class="fogetpass">
+                                <a id="hjjc-a-btn" style="float: left;cursor: pointer;">ç¯å¢æ£æµ</a>
+                                <!-- <a href="/zjgfdzswj/main/user/forgetpwd/index.html">å¿è®°å¯ç  ?</a> -->
+                                <a href="/CgsSBWeb/page/forgetpwd/index.html">å¿è®°å¯ç  ?</a>
+                            </div>
+
+                            <div class="login-btns">
+                                <a id="yhmlogin" class="loginbtn primary">ç»å½</a>
+                                 <!-- <a href="/zjgfdzswj/main/user/register/index.html" class="loginbtn warning">æ³¨å</a> -->
+                                <a href="/CgsSBWeb/page/registerZrr/index.html" class="loginbtn warning">æ³¨å</a>
+                            </div>
+
+                            <!--<img id="qrcodebtn" class="bottom-right" src="/zjgfcdn/zjimg/home/login/ewm2.png">-->
+                        </div>
+                        <!--<div id="ewmwrapper" class="hidden">-->
+                            <!--<div class="codeDiv" id="codeDiv">-->
+
+                            <!--</div>-->
+                            <!--<div style="text-align: center;margin-top: 20px;">-->
+                                <!--æå¼ æµæ±ç¨å¡APP æ«ç ç»å½-->
+                            <!--</div>-->
+
+                            <!--<img id="qrcode-back-btn"  class="bottom-right" src="/zjgfcdn/zjimg/home/login/ewm1.png">-->
+                        <!--</div>-->
+                    </div>
+
+                    <div id="ca" class="hidden">
+
+                        <div class="zj-input-group">
+                            <div class="zj-input-item">
+                                <span class="imgspan">
+                                    <img src="/zjgfcdn/zjimg/home/login/username.png">
+                                </span>
+                                <input id="capassword"  type="password" placeholder="CAå¯ç ">
+                            </div>
+                        </div>
+
+
+                        <div class="cadetection">
+                            <label>æµæ±çæ³äººæ°å­è¯ä¹¦æ£æµä¸­...</label>
+                            <img style="width: 15px;height: 15px;" src="/zjgfcdn/img/loading.gif">
+                        </div>
+
+
+                        <div class="login-btns">
+                            <a id="calogin" class="loginbtn primary">ç»å½</a>
+                        </div>
+                    </div>
+
+                    <div id="swsb" class="hidden">
+                        <div class="zj-input-group">
+                            <div class="zj-input-item">
+                        <span class="imgspan">
+                            <img src="/zjgfcdn/zjimg/home/login/username.png">
+                        </span>
+                                <input id="swsbpassword"  type="password" placeholder="ç¨æ§ç/éç¨çè¯ä¹¦å¯ç ">
+                            </div>
+                        </div>
+                        <div class="login-btns">
+                            <a id="swsblogin" class="loginbtn primary">ç»å½</a>
+                        </div>
+                    </div>
+
+                    <div id="byh" class="hidden">
+                        <div class="zj-input-group">
+                            <div class="zj-input-item">
+                        <span class="imgspan">
+                            <img src="/zjgfcdn/zjimg/home/login/username.png">
+                        </span>
+                                <input id="byhusername" placeholder="æ¥éªæ·">
+                            </div>
+
+                            <div class="zj-input-item">
+                        <span class="imgspan">
+                            <img src="/zjgfcdn/zjimg/home/login/password.png">
+                        </span>
+                                <input id="byhpassword" type="password" placeholder="è¯·è¾å¥å¤ç»è¯ç¼å·å¯¹åºçå¯ç ">
+                            </div>
+
+                            <div class="zj-input-item code">
+                        <span class="imgspan">
+                            <img src="/zjgfcdn/zjimg/home/login/username.png">
+                        </span>
+                                <input class="vcode" id="byhcode" placeholder="éªè¯ç ">
+                                <span class="codespan">
+                            <img class="codeimg" id="byhimg" src="/zjgfdzswj/kaptcha.jpg">
+                        </span>
+                            </div>
+
+                        </div>
+                        <div class="fogetpass">
+                            <a href="/zjgfdzswj/main/user/wcjyforgetpwd/index.html">å¿è®°å¯ç  ?</a>
+                        </div>
+                        <div class="login-btns">
+                            <a id="byhlogin" class="loginbtn primary">ç»å½</a>
+                        </div>
+                    </div>
+
+                    <div id="sbf" class="hidden">
+
+                        <div class="zj-input-group">
+                            <div class="zj-input-item">
+                        <span class="imgspan">
+                            <img src="/zjgfcdn/zjimg/home/login/username.png">
+                        </span>
+                                <input id="sbfusername" placeholder="è¯·è¾å¥è´¦æ·">
+                            </div>
+
+                            <div class="zj-input-item">
+                        <span class="imgspan">
+                            <img src="/zjgfcdn/zjimg/home/login/password.png">
+                        </span>
+                                <input id="sbfpassword" type="password" placeholder="å¯ç ">
+                            </div>
+
+                            <div class="zj-input-item code">
+                        <span class="imgspan">
+                            <img src="/zjgfcdn/zjimg/home/login/username.png">
+                        </span>
+                                <input class="vcode" id="sbfcode" placeholder="éªè¯ç ">
+                                <span class="codespan">
+                            <img class="codeimg" id="sbfimg" src="/zjgfdzswj/kaptcha.jpg">
+                        </span>
+                            </div>
+
+                        </div>
+                        <div class="login-btns">
+                            <a id="sbflogin" class="loginbtn primary">ç»å½</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden" id="zrrlogin">
+                <div class="login-nav">
+                    <a id="zrryhmA" class="active" style="float: left;margin-left: 15px;">
+                        ç¨æ·åç»å½
+                    </a>
+                    <span class="loginclose">
+                        X
+                    </span>
+                </div>
+
+                <div id="zrryhm">
+
+                    <div  id="zrryhmwrapper">
+                        <div class="zj-input-group">
+                            <div class="zj-input-item code">
+                                <span class="imgspan">
+                                    <img src="/zjgfcdn/zjimg/home/login/username.png">
+                                </span>
+                                <input id="zrrusername" placeholder="ææºå·">
+                            </div>
+
+                            <div class="zj-input-item">
+                            <span class="imgspan">
+                                <img src="/zjgfcdn/zjimg/home/login/password.png">
+                            </span>
+                                <input id="zrrpassword" type="password" placeholder="å¯ç ">
+                            </div>
+
+                            <div class="zj-input-item code">
+                            <span class="imgspan">
+                                <img src="/zjgfcdn/zjimg/home/login/tpyzm.png">
+                            </span>
+                                <input class="vcode" id="zrryhmcode" placeholder="éªè¯ç ">
+                                <span class="codespan">
+                                <img class="codeimg" id="zrryhmimg" src="/zjgfdzswj/kaptcha.jpg">
+                            </span>
+                            </div>
+                        </div>
+                        <div class="fogetpass">
+                            <!-- <a href="/zjgfdzswj/main/user/forgetpwd/index.html">å¿è®°å¯ç  ?</a> -->
+                            <a href="/CgsSBWeb/page/forgetpwd/index.html">å¿è®°å¯ç  ?</a>
+                        </div>
+
+                        <div class="login-btns">
+                            <a id="zrryhmlogin" class="loginbtn primary">ç»å½</a>
+                            <!-- <a href="/zjgfdzswj/main/user/register/index.html" class="loginbtn warning">æ³¨å</a> -->
+                            <a href="/CgsSBWeb/page/registerZrr/index.html" class="loginbtn warning">æ³¨å</a>
+                        </div>
+
+                        <!--<img id="zrrqrcodebtn" class="bottom-right" src="/zjgfcdn/zjimg/home/login/ewm2.png">-->
+                    </div>
+
+                    <!--<div id="zrrewmwrapper" class="hidden">-->
+                        <!--<div class="codeDiv" id="zrrcodeDiv">-->
+
+                        <!--</div>-->
+                        <!--<div style="text-align: center;margin-top: 20px;">-->
+                            <!--æå¼ æµæ±ç¨å¡APP æ«ç ç»å½-->
+                        <!--</div>-->
+
+                        <!--<img id="zrrqrcode-back-btn"  class="bottom-right" src="/zjgfcdn/zjimg/home/login/ewm1.png">-->
+                    <!--</div>-->
+
+                </div>
+
+            </div>
+
+            <div class="hidden" id="sszylogin">
+                <div class="login-nav">
+                    <a class="active" style="float: left;margin-left: 15px;">
+                        ç¨æ·åç»å½
+                    </a>
+                    <span class="loginclose">
+                        X
+                    </span>
+                </div>
+
+                <div id="sszyyhmwrapper">
+                    <div class="zj-input-group">
+                        <div class="zj-input-item code">
+                            <span class="imgspan">
+                                <img src="/zjgfcdn/zjimg/home/login/username.png">
+                            </span>
+                            <input id="sszyusername" placeholder="ç¨æ·å">
+                        </div>
+
+                        <div class="zj-input-item code">
+                        <span class="imgspan">
+                            <img src="/zjgfcdn/zjimg/home/login/tpyzm.png">
+                        </span>
+                            <input class="vcode" id="sszyyhmcode" placeholder="éªè¯ç ">
+                            <span class="codespan">
+                            <img class="codeimg" id="sszyyhmimg" src="/zjgfdzswj/kaptcha.jpg">
+                        </span>
+                        </div>
+                    </div>
+
+                    <div class="login-btns">
+                        <a id="sszyyhmlogin" class="loginbtn primary">ç¡®è®¤</a>
+                    </div>
+
+                    <!--<img id="sszyqrcodebtn" class="bottom-right" src="/zjgfcdn/zjimg/home/login/ewm2.png">-->
+                </div>
+
+                <!--<div id="sszyewmwrapper" class="hidden">-->
+                    <!--<div  class="codeDiv" id="sszycodeDiv">-->
+
+                    <!--</div>-->
+                    <!--<div style="text-align: center;margin-top: 20px;">-->
+                        <!--æå¼ æµæ±ç¨å¡APP æ«ç ç»å½-->
+                    <!--</div>-->
+
+                    <!--<img id="sszyqrcode-back-btn"  class="bottom-right" src="/zjgfcdn/zjimg/home/login/ewm1.png">-->
+                <!--</div>-->
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<div id="selectbsybox" class="loginyzpart hidden">
+    <div class="zj-mask">
+    </div>
+    <div class="yzloginbox">
+        <div class="login-big-nav yzone">
+            <a id="selectname" href="#qylogin" class="login-big-nav-item active" style="width: 25%;">
+                ä¼ä¸ç¨æ·
+            </a>
+        </div>
+        <div class="login-body">
+            <div id="qyVerify">
+                <div>
+                    <div class="yz-title">
+                        <span id="bsryyz">åç¨äººåéªè¯</span>
+                        <!--<a id="yz-addbsy" style="float: right;color: red;cursor: pointer;">æ·»å åç¨å</a>-->
+                    </div>
+
+                    <div class="yz-group">
+
+                        <div class="yz-item">
+                            <span class="arrow"></span>
+                            <span id="bsryxzname" class="name">åç¨äººåéæ©</span>
+
+                            <div id="bsysfxz" class="content" >
+                                <input type="text" style="width: 100%;" class="yz-input" name="bsysf" readonly id="bsysf">
+                            </div>
+                        </div>
+
+                        <div class="hidden">
+                            <input type="hidden" id="uuidxh">
+                            <input type="hidden" id="loginuuidxh">
+                            <input type="hidden" id="changeuuidxh">
+                            <input type="hidden" id="user_type">
+                            <input type="hidden" id="bizNo">
+
+                            <input type="hidden" id="yz-sjhm">
+                            <input type="hidden" id="yz-name">
+                            <input type="hidden" id="yz-sfzjhm">
+
+                        </div>
+
+                        <div id="yzfsbox" class="isSelectedBsy yz-item hidden">
+                            <div class="name">
+                                éªè¯æ¹å¼
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <!-- <label class="yz-radio" for="smrz"><input onclick="selectYzfs(this)" value="3" name="yzfs" id="smrz" type="radio"><i></i>å®åè®¤è¯</label> -->
+                                    <label class="yz-radio" for="mm"><input onclick="selectYzfs(this)" value="1" name="yzfs" id="mm" type="radio"><i></i>å¯ç </label>
+                                    <!--<label class="yz-radio hidden" for="sjyzm"><input onclick="selectYzfs(this)"  value="2" name="yzfs" id="sjyzm" type="radio"><i></i>ææºç­ä¿¡éªè¯ç </label>-->
+                                    <label class="yz-radio" for="ddyzm"><input onclick="selectYzfs(this)"  value="4" name="yzfs" id="ddyzm" type="radio"><i></i>éééªè¯ç </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="yzfscontent" class="isSelectedBsy hidden">
+                            <!--<div id="sjyzmbox" class="yz-item yztype hidden">-->
+                            <!--<div class="name">-->
+                            <!--ç­ä¿¡éªè¯ç -->
+                            <!--</div>-->
+                            <!--<div class="content">-->
+                            <!--<div class="yz-dxyzm">-->
+                            <!--<input class="yz-input" id="yz-dxyzm" type="text">-->
+                            <!--<span class="yzmbtn" id="yz-yzmbtn">è·åéªè¯ç </span>-->
+                            <!--<span class="yzmbtn hidden" id="yz-seconds">è·åéªè¯ç </span>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <div id="mmbox" class="yz-item yztype hidden">
+                                <div class="name">
+                                    è¾å¥å¯ç 
+                                </div>
+                                <div class="content">
+                                    <input id="yz-mm" class="yz-input" style="width: 100%;" placeholder="èªç¶äººç¨æ·ç»å½çå¯ç " type="password">
+                                </div>
+                            </div>
+                            <div id="smrzbox" class="yz-item yztype hidden">
+                                <img id="yz-img" alt="">
+                                <div>
+                                    æå¼æ¯ä»å®æ«ç è®¤è¯ï¼è®¤è¯æåç¹å»ç»å½ã
+                                </div>
+                            </div>
+                            <div id="ddbox" class="yz-item yztype hidden">
+                                <div class="name">
+                                    éééªè¯ç 
+                                </div>
+                                <div class="content">
+                                    <div class="yz-dxyzm">
+                                        <input class="yz-input" id="yz-ddyzm" type="text">
+                                        <span class="yzmbtn" id="yz-dd-yzmbtn">è·åéªè¯ç </span>
+                                        <span class="yzmbtn hidden" id="yz-dd-seconds">è·åéªè¯ç </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div style="text-align:left;margin-top: 20px;padding-left: 15px;text-indent: 2em;line-height: 25px;">
+                å°æ¬ççº³ç¨äººï¼å æå¡åçº§è°æ´ï¼çµå­ç¨å¡å±å®åè®¤è¯ç»å½åè½æåï¼æ¨å¯éè¿æ¥ç<a target="_blank" href="/SignCheck/czgc/DLCZSC.htm">ãçµå­ç¨å¡å±ç¨æ·ç»å½æä½æåã</a>äºè§£ææ°çç»å½æ¹å¼ï¼ç»æ¨å¸¦æ¥çä¸ä¾¿æ¬è¯·è°è§£ï¼            
+            </div>
+            <div id="fogetpass" class="fogetpass hidden">
+               <!-- <a href="/zjgfdzswj/main/user/forgetpwd/index.html">å¿è®°å¯ç  ?</a> -->
+               <a href="/CgsSBWeb/page/forgetpwd/index.html">å¿è®°å¯ç  ?</a>
+            </div>
+            <div id="yz-btns" class="isSelectedBsy login-btns hidden" style="margin-top: 40px;">
+                <a id="yz-close" class="loginbtn warning">å³é­</a>
+                <a id="yz-login" class="loginbtn primary">ç»å½</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="addbsybox" class="loginyzpart hidden">
+    <div class="zj-mask">
+    </div>
+    <div class="yzloginbox">
+        <div class="login-big-nav yzone">
+            <a class="login-big-nav-item active" style="width: 25%;">
+                æ·»å åç¨å
+            </a>
+        </div>
+        <div class="login-body">
+            <div style="padding-top: 20px;">
+                <div class="yz-group">
+                    <div class="yz-item">
+                        <span class="name">å§å<em>*</em></span>
+                        <div class="content" >
+                            <input type="text" style="width: 100%;" class="yz-input" id="re-xmimg">
+                        </div>
+                    </div>
+                    <div class="yz-item">
+                        <span class="name">ææºå·ç <em>*</em></span>
+                        <div class="content" >
+                            <input type="text" style="width: 100%;" class="yz-input" id="re-sjhm">
+                        </div>
+                    </div>
+                    <div class="yz-item">
+                        <span class="name">èº«ä»½è¯å·ç <em>*</em></span>
+                        <div class="content" >
+                            <input type="text" style="width: 100%;" class="yz-input" id="re-sfzjhm">
+                        </div>
+                    </div>
+                    <div class="yz-item">
+                        <span class="name">å¯ç <em>*</em></span>
+                        <div class="content" >
+                            <input type="password" style="width: 100%;" class="yz-input" id="re-dlmm">
+                        </div>
+                    </div>
+                    <div class="yz-item">
+                        <span class="name">ç¡®è®¤å¯ç <em>*</em></span>
+                        <div class="content" >
+                            <input type="password" style="width: 100%;" class="yz-input" id="re-dlmm1">
+                        </div>
+                    </div>
+                    <div id="addBsyYzm" class="yz-item hidden">
+                        <span class="name">éªè¯ç <em>*</em></span>
+                        <div class="content">
+                            <input type="text" style="width: 100%;" class="yz-input" id="re-yzm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="re-btns" class="isSelectedBsy login-btns" style="margin-top: 40px;">
+                <a id="re-back" class="loginbtn primary">è¿å</a>
+                <a id="re-close" class="loginbtn warning">å³é­</a>
+                <a id="re-login" class="loginbtn primary">ç¡®å®</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="hjjcpanel" class="panelbox">
+    <div class="zj-mask"></div>
+    <div class="panelbody">
+        <div class="panelheader">
+            <span>ç¯å¢æ£æµç»æåé¦</span> <span id="hjjc-close" class="panel-close">x</span>
+        </div>
+        <div class="panelcontent row">
+            <div class="col-xs-3 panel-l">
+                <img src="/zjgfcdn/zjimg/hjjc/tp1.png">
+                <div>
+                    æ£æµç»æ:<span id="jcjg"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-8 panel-r">
+                <div class="hjjc-title">
+                    æ¬å°ç¯å¢æ£æµ
+                </div>
+
+                <div id="system" class="hjjc-item">
+                    <span>çµèç³»ç»:</span>
+                </div>
+                <div id="brower" class="hjjc-item">
+                    <span>æµè§å¨:</span>
+                </div>
+
+                <div id="canum" class="hjjc-item">
+
+                </div>
+                <div id="skp" class="hjjc-item">
+                    <span>ç¨æ§è®¾å¤è¿æ¥æåµ:</span>
+                </div>
+                <div id="network" class="hjjc-item">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div id="yhxxpanel" class="panel-box hidden">
+    <div class="zj-mask"></div>
+    <div class="panelbody">
+        <div class="panelheader" style="text-align: center;height: 50px;line-height: 50px;color: black;">
+            <span>å½å®¶ç¨å¡æ»å±æµæ±çç¨å¡å±çµå­ç¨å¡å±ç¨æ·åè®®</span>
+        </div>
+        <div class="panelcontent">
+            <div class="para">
+                <p>ä¸ãç¨æ·å¨ä½¿ç¨å½å®¶ç¨å¡æ»å±æµæ±çç¨å¡å±å»ºè®¾çâçµå­ç¨å¡å±âç½ç«ï¼<a href="https://etax.zhejiang.chinatax.gov.cn/">https://etax.zhejiang.chinatax.gov.cn/</a>ï¼ä¸ç§°âçµå­ç¨å¡å±âæâæ¬ç½ç«âï¼ä¹åï¼åæ¬ä½ä¸éäºçµå­ç¨å¡å±æä¾çå¶ä»å®¢æ·ç«¯åºç¨æå¡ï¼ï¼è¯·å¡å¿è®¤çéè¯»ãçè§£ãå½å®¶ç¨å¡æ»å±æµæ±çç¨å¡å±çµå­ç¨å¡å±ç¨æ·åè®®ãï¼ä¸ç§°âæ¬åè®®âï¼çç¸å³åå®¹ã</p>
+                <p>äºãå½å®¶ç¨å¡æ»å±æµæ±çç¨å¡å±æç§æ¬åè®®ä»¥åç¸å³æä½æå¼ï¼ä¸ºæµæ±çï¼ä¸åå«å®æ³¢å¸ï¼è¾åºèå´åççº³ç¨äººåè´¹æä¾åºäºäºèç½ä»¥åç§»å¨ç½ç»ççµå­ç¨å¡å±ç¸å³æå¡ãæ¬ç½ç«æä¾æä½æåä¾ç¨æ·ä½¿ç¨æ¶åç§ï¼å¦æå¹³å°åè½ååï¼æä½æåä¼åæ¶æ´æ°ãå¦å ç¨æ·ä¸ªäººåå æªæç§æ¬ç½ç«æä¾çæä½æåè¿è¡æä½ææä½ä¸å½ç­ï¼æå¯¼è´ç¨æ·åºç°çä»»ä½æå¤±ç±ç¨æ·èªè¡æ¿æï¼æ¬ç½ç«ä¸æ¿æä»»ä½è´£ä»»ã</p>
+                <p>ä¸ãç¨æ·ä½¿ç¨æ¬ç½ç«æå¡ï¼å³è¡¨ç¤ºç¨æ·æ¥åãå½å®¶ç¨å¡æ»å±æµæ±çç¨å¡å±çµå­ç¨å¡å±ç¨æ·åè®®ãä»¥åæ¬ç½ç«å¬ç¤ºçåé¡¹è§åãè§èã</p>
+                <p>åãå½å®¶ç¨å¡æ»å±æµæ±çç¨å¡å±æææ ¹æ®å®éæåµåæ´æ¬åè®®é¨ååå®¹ï¼å¹¶éè¿çµå­ç¨å¡å±è¿è¡å¬åï¼ä¸åå¯¹ç¨æ·åç¬éç¥ãåæ´åçåè®®ä¸ç»å¬åï¼ç«å³èªå¨çæãç¨æ·å¨åæ´ä¿¡æ¯åå¸ä¹åç»§ç»­ä½¿ç¨æ¬ç½ç«çï¼è§ä¸ºç¨æ·åæä¸æ¥åè¯¥åæ´çåå®¹ã</p>
+                <p>äºãç¨æ·é¡»ç¡®ä¿ä¸ªäººè´¦æ·åå¯ç çå®å¨ï¼å¹¶ä¿è¯å¶è´¦æ·åå¯ç åç±å¶æ¬äººææ¡åä½¿ç¨ãä»»ä½ç»å½ç¨æ·åç¨è´¦æ·çä½¿ç¨èåè¢«è§ä¸ºç¨æ·æ¬äººãç¨æ·é¡»å¯¹å¶è´¦æ·çä¸åè¡ä¸ºè´è´£ï¼å ç¨æ·ä¸ªäººåå å¯¼è´è´¦æ·å¯ç æ³é²ï¼é æç¨æ·èªèº«ãçµå­ç¨å¡å±ç³»ç»æèå¶ä»ç¨æ·é­åæå¤±çï¼ç±è¯¥ç¨æ·æ¿æå¨é¨è´£ä»»ãå¦å ä¸å¯ææçå ç´ ï¼å¯¼è´ç¨æ·èµææ³é²ãä¸¢å¤±ãè¢«çç¨æé ææå¤±çï¼æ¬ç½ç«å¯¹æ­¤ä¸è´è´£ä»»ã</p>
+                <p>å­ãç¨æ·ä¸å¾å©ç¨æ¬ç½ç«æå®³å¶ä»ä½¿ç¨èçåæ³æçï¼ä¸å¾å©ç¨æ¬ç½ç«ç´æ¥æé´æ¥å°ä»äºè¿åä¸­åäººæ°å±åå½æ³å¾ãå½éå¬çº¦ä»¥åç¤¾ä¼å¬åºè¯ä¿çè¡ä¸ºãç¨æ·å¨ä½¿ç¨æ¬ç½ç«æå¡è¿ç¨ä¸­ï¼é¡»å¯¹èªå·±ä½¿ç¨æå¡çè¡ä¸ºåä¸ä¼ çèµæçå®æ§ååæ³æ§æ¿æå¨é¨è´£ä»»ï¼å ç¨æ·æäº¤éæ³æä¸å®èµæå¼èµ·çä¸ååæï¼ç±ç¨æ·æ¬äººè´è´£ã</p>
+                <p>ä¸ãç¨æ·æäº¤ãä¸ä¼ æåå¸çä¿¡æ¯å°ä»å¯¹ç¨å¡äººåå¯è§ãå½å®¶ç¨å¡æ»å±æµæ±çç¨å¡å±åä¸å±åçº§æºå³ä¾æ³ç®¡çç¨æ·ç¸å³ä¿¡æ¯åç¨æ·åç¨ç¸å³ä¿¡æ¯ï¼å¹¶å¨æ³å¾è§å®èå´åæ¿æç¨æ·çæ¶ç¨ä¿¡æ¯ãåä¸ç§å¯åä¸ªäººéç§ç­çä¿å¯ä¹å¡ãç¨æ·çç¨æ¶è¿æ³è¡ä¸ºä¿¡æ¯ï¼æå¶ä»ææ³å¾è§å®åºä»¥å¬å¼ãæ«é²çä¿¡æ¯ï¼ä¸å±äºä¿å¯èå´ã</p>
+                <p>å«ãç¨æ·å¨æ¬ç½ç«æäº¤ãä¸ä¼ æåå¸çä¿¡æ¯ï¼ä»¥æ¬ç½ç«æå¡å¨ç«¯æ¥æ¶å°çä¿¡æ¯ä¸ºåãçµå­ç¨å¡å±å±ç«¯ä¿éç¨æ·æäº¤ãä¸ä¼ æåå¸çèµæç¬ç«ä¿å­ï¼ä¸åç¯¡æ¹ãè¥ç¨æ·æäº¤äºéè¯¯èµææå¯¹æå¡å¨ç«¯å­å¨ãæ¾ç¤ºçæ°æ®æå¼è®®ï¼ç¨æ·åºç¬¬ä¸æ¶é´èç³»ä¸»ç®¡ç¨å¡æºå³å¤çï¼å¹¶ç±ç¨æ·æ¿æç¸åºçä¸¾è¯è´£ä»»ãè¥ç¨æ·ææä¾çèµæå æå¤ç­å¤±ï¼æ æ³æ¥æ¾ææ¢å¤çï¼ç¨æ·é¡»æç§ç¨å¡æºå³è¦æ±ï¼åæ¬¡æä¾ç¸å³èµæãå¦åå æ­¤é æçæå®³ï¼å°ç±ç¨æ·èªè¡æ¿æè´£ä»»ã</p>
+                <p>ä¹ãæ¬ç½ç«ä¸­æ¥è¯¢ãæ¾ç¤ºçæ°æ®ä¸éç¨ä¸ææ ¸å¿å¾ç®¡ç³»ç»åå¶è¾å©ç³»ç»ä¸­çæ°æ®å­å¨å·®å¼çï¼ä»¥éç¨ä¸ææ ¸å¿å¾ç®¡ç³»ç»åå¶è¾å©ç³»ç»ä¸­å­å¨çæ°æ®ä¸ºåã</p>
+                <p style="color:#53acf3;">åããç¨å¡æä¹¦çµå­éè¾¾ç¡®è®¤ä¹¦ãï¼ä¸ºè¿ä¸æ­¥ä¾¿å©çº³ç¨äººåç¨ï¼ä¿æ¤çº³ç¨äººåæ³æçï¼ç¨å¡æºå³èª2020å¹´4æ1æ¥èµ·å¨å¨å½èå´åæ¨è¡ç¨å¡æä¹¦çµå­éè¾¾ãç­¾è®¢æ¬ç¡®è®¤ä¹¦åï¼è¯·æ¨ç¥æä»¥ä¸åå®¹ï¼çµå­éè¾¾ç¨å¡æä¹¦çèå´ä¸ºç¨å¡æºå³ç¨æ¶å¾æ¶ç®¡çä¸­åºå·çåç±»æä¹¦ï¼æä¸åæ¬ç¨å¡å¤çå³å®ä¹¦ãç¨å¡è¡æ¿å¤ç½å³å®ä¹¦ï¼ä¸å«ç®æç¨åºå¤ç½ï¼ãç¨æ¶ä¿å¨æªæ½å³å®ä¹¦ãç¨æ¶å¼ºå¶æ§è¡å³å®ä¹¦ãé»æ­¢åºå¢å³å®ä¹¦ä»¥åç¨å¡ç¨½æ¥ãç¨å¡è¡æ¿å¤è®®è¿ç¨ä¸­ä½¿ç¨çç¨å¡æä¹¦ï¼çº³ç¨äººãæ£ç¼´ä¹å¡äººç­¾ç½²æ¬ç¡®è®¤ä¹¦åï¼ç¨å¡æºå³å¯ä»¥éè¿çµå­ç¨å¡å±éè¾¾çµå­ç¨å¡æä¹¦ãçµå­çå¼ç¨å¡æä¹¦å°è¾¾çµå­ç¨å¡å±çæ¥æä¸ºéè¾¾æ¥æï¼çµå­çå¼ç¨å¡æä¹¦ä¸çº¸è´¨ç¨å¡æä¹¦å·æåç­æ³å¾æåãçº³ç¨äººãæ£ç¼´ä¹å¡äººéè¦çº¸è´¨æä¹¦çï¼å¯èªè¡ä¸è½½æå°ï¼ä¹å¯ä»¥å°ç¨å¡æºå³åç¨æå¡åæå°ã</p>
+                <p>åä¸ãæ¬ç½ç«ä¸çæçãä¸åå è½½æçµå­ç­¾åæçµå­å°ç« çPDFæä¹¦ï¼ä¸çº¸è´¨æä¹¦å·æç¸åçæ³å¾æåãè¥ç¨æ·ä»éè¦çº¸è´¨æå¶ä»æ¨¡å¼çæä¹¦ï¼è¯·è³ç¨å¡æºå³åäºçªå£å¦è¡æåºç³è¯·ã</p>
+                <p>åäºãçµå­ç¨å¡å±å±ç«¯ä¼å®ææä¸å®æå°å¯¹æä¾æå¡çå¹³å°åç¸å³è®¾å¤è¿è¡æ£ä¿®æèç»´æ¤ãé´äºç½ç»æå¡çç¹æ®æ§ï¼åæ¬ä½ä¸éäºæå¡å¨çç¨³å®æ§é®é¢ãçº¿è·¯ææºå¨çæéé®é¢ãæ¶æçç½ç»æ»å»ç­è¡ä¸ºçå­å¨åå¶ä»çµå­ç¨å¡å±æ æ³æ§å¶çæå½¢ï¼ï¼çµå­ç¨å¡å±å±ç«¯ææéæ¶ä¸­æ­æä¸­æ­¢æ¬ç½ç«åå¶éå±å®¢æ·ç«¯çæå¡ãçµå­ç¨å¡å±å±ç«¯å°å°½å¯è½åæ¶éè¿ç½é¡µå¬åãç³»ç»éç¥æå¶ä»åçæ¹å¼éç¥åå°å½±åçç¨æ·ï¼å¹¶æä¾åºæ¥é¢æ¡ãä½ç¨æ·ä»åºæ ¹æ®å®éçéç¥æå¬åï¼å¨æ³å®æéåï¼å°ä¸»ç®¡ç¨å¡æºå³ä¸é¨åçç¸å³äºå®ã</p>
+                <p>åä¸ãå¦åçä¸åä»»ä½ä¸ç§æå½¢ï¼çµå­ç¨å¡å±å±ç«¯ææéæ¶ä¸­æ­æä¸­æ­¢åç¨æ·æä¾æ¬åè®®ä¸çæå¡èæ éå¯¹ç¨æ·æä»»ä½ç¬¬ä¸æ¹æ¿æä»»ä½è´£ä»»ï¼</p>
+                <p>(ä¸)ç¨æ·æä¾çä¸ªäººèµæä¸çå®ï¼</p>
+                <p>(äº)ç¨æ·è¿åæ³å¾æ³è§ãå½å®¶æ¿ç­ææ¬åè®®ä¸­è§å®çä½¿ç¨è§åï¼</p>
+                <p>(ä¸)ç¨æ·è¿åç¸å³ç¨æ¶ç®¡çè§å®ä¸­çå¶ä»æå½¢ã</p>
+                <p>ååãçµå­ç¨å¡å±å±ç«¯ä¿çå¨éå½æ¶é´ä¸ç»éç¥èè¿è¡ä»¥ä¸è¡ä¸ºçæå©ï¼</p>
+                <p>(ä¸) åºäºåçåå ï¼ä¿®æ¹ãä¸­æ­¢æç»æ­¢æ¬ç½ç«æå¶ä»»ä½é¨åçè¿è¡æè®¿é®ï¼</p>
+                <p>(äº) ä¿®æ¹æåæ´æ¬ç½ç«éç¨åè®®æåè®®æ¡æ¬¾ï¼</p>
+                <p>(ä¸) å¨è¿è¡å®ææéå®æç»´æ¤ãçº æ­£éè¯¯æå¶ä»åæ´æ¶ï¼ä¸­æ­æ¬ç½ç«ææ¬ç½ç«ä»»ä½é¨åçè¿è¡ã</p>
+                <p>åäºãè¥è¿åæ¬åè®®ï¼çµå­ç¨å¡å±å±ç«¯å¯ä»¥èªè¡å³å®ä¸æ éæåéç¥ï¼å¯¹è¯¥ç¨æ·å¨æ¬ç½ç«ä¸éåéå¶æªæ½ã</p>
+                <p>åå­ãæ¬ç½ç«åå«çæææå­ãå¾è¡¨ãå¾çãæ è¯ãå£°é³ãç¾æ¯ä½ååè®¡ç®æºç¼ç  (åç§°ä¸ºâåå®¹â)ï¼åæ¬ä½ä¸éäºè¿äºåå®¹çè®¾è®¡ãç»æãæåºç­ï¼åå±çµå­ç¨å¡å±æææç»ææä¸»ä½è®¸å¯ç»çµå­ç¨å¡å±ä½¿ç¨ã</p>
+                <p>åä¸ãé¤æ¬åè®®æç¡®è§å®å¤ï¼æªç»ææä¸»ä½äºåæç¡®ä¹¦é¢åæï¼ä»»ä½åªä½ãäºèç½ç«ååä¸æºæä¸å¾æèªè½¬è½½æ¬ç½ç«æä¾çä¿¡æ¯åæå¡åå®¹ï¼å¦éè½¬è½½ï¼å¿é¡»ä¸ç¸åºæä¾åä½ç´æ¥èç³»è·å¾åæ³ææãæ¬ç½ç«ææ¶åå°ççæå½æ¬ç½ç«ææï¼ä¸åèä½ææ³ãä¸å©æ³ä»¥ååç±»å¶ä»ç¥è¯äº§ææ³çä¿æ¤ã</p>
+                <p>åå«ãææä¸ç¨æ·è®¿é®æä½¿ç¨æ¬ç½ç«æå³çäºé¡¹ï¼åæ¬ææäºè®®ï¼å°åä¸­åäººæ°å±åå½å¤§éå°åºæ³å¾ç®¡è¾ã</p>
+                <p>åä¹ãå ä½¿ç¨æ¬ç½ç«èå°±æ¬åè®®äº§ççäºè®®ï¼åæ¹åºç«å³ç§æ¿åæååè§£å³äºè®®ãè¥åæ¹æªè½å¨åçæ¶é´åè§£å³äºè®®ï¼ä»»ä½ä¸æ¹å¯å°äºè®®æäº¤è°è§£ï¼æåæµæ±çï¼ä¸åå«å®æ³¢å¸ï¼æç®¡è¾æçäººæ°æ³é¢æèµ·è¯è®¼ã</p>
+                <p>äºåãç¨æ·ä½¿ç¨æ¬ç½ç«èå°±è¡æ¿è¡ä¸ºäº§ççäºè®®ï¼éç¨è¡æ¿å¤è®®æ³ãè¡æ¿è¯è®¼æ³ä»¥åç¸å³è¡æ¿æ³å¾æ³è§ï¼ä¸ååæ¬¾è§å®çº¦æã</p>
+                <p style="text-align: right;">å½å®¶ç¨å¡æ»å±æµæ±çç¨å¡å±</p>
+
+            </div>
+            <div style="text-align: center;padding: 15px;font-size: 16px;">
+                <div style="color:#53acf3;font-size:14px;margin-bottom: 10px;">
+                    <input style="vertical-align: text-bottom;" id="yhxyagree" type="checkbox" checked><span>æå·²è®¤çéè¯»å¹¶çè§£ãç¨å¡æä¹¦çµå­éè¾¾ç¡®è®¤ä¹¦ãå¨é¨åå®¹ï¼åæç¨å¡æºå³éè¿çµå­ç¨å¡å±/ä¸ªäººæå¾ç¨APPãWEBç«¯éè¾¾çµå­ç¨å¡æä¹¦ã</span>
+                </div>
+                <button id="readedyhxy" class="zjgf_btn">åæ</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div id="zxzxbtn">
+</div>
+<div id="zxzxreminder" class="hidden">
+    <div class="zj-mask"></div>
+    <div class="zxzx-body">
+        <div id="zxzxclose">
+
+        </div>
+    </div>
+</div>
+<div id="imgbox" class="hidden">
+    <div class="zj-mask"></div>
+    <img id="bigimg" src="" alt="">
+</div>
+
+
+
+
+<div id="ywlogin" class="hidden">
+    <div class="zj-mask"></div>
+    <div class="ywloginbox">
+        <!-- <div id="yw-smlogin" class="ywlogin-item">
+            <label>å·è¸ç»å½</label>
+            <p>ä»éç¨äºæ³å®ä»£è¡¨äººï¼ä¸ä¸»ï¼</p>
+        </div> -->
+        <div id="yw-mmlogin" class="ywlogin-item">
+            <label>å¯ç ç»å½</label>
+            <p></p>
+        </div>
+    </div>
+</div>
 
 </body>
-
 </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+
+    console.log('jQuery版本：' + $.fn.jquery);
+
+    $.get("http://localhost:11010/web/demo?dm=123&uuid=hfsu&name=更何况").then((a)=>{
+        console.log(a)
+    }) 
+
+
+</script>
+</html>
